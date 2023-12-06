@@ -3,11 +3,13 @@
         <div class="header">
             <div class="email">
                 <a href="/"><img src="../images/default-account.png" alt="gambar account"></a>
-                <h2>Email@gmail.com</h2>
+                <h2>
+                    <%=akun.email%>
+                </h2>
                 <a href="/"><i class="fa-solid fa-right-from-bracket" style="color: white;"></i>sign out</a>
             </div>
             <div class="judul">
-                <h1>PostgreSQL Bread(Browse,Read,Edit,Add,Delete) and Pagination</h1>
+                <h1>PostgreSQL Breads(Browse,Read,Edit,Add,Delete,Sort)</h1>
             </div>
         </div>
         <div class="body">
@@ -16,33 +18,62 @@
                 <div class="form">
                     <div class="title">
                         <p>Title</p>
-                        <input type="text" title="title" placeholder="insert your title" value="">
+                        <input type="text" title="title" placeholder="insert your title" value="<%=query.title%>">
                     </div>
                     <div class="deadline">
                         <p name="deadline">
                             Deadline
                         </p>
-                        <input type="date" name="startdate" style="width: 36%; margin-right: 60px;" value="">
+                        <input type="date" name="startdate" style="width: 36%; margin-right: 60px;"
+                            value="<%=query.startdate%>">
                         s.d.
-                        <input type="date" name="enddate" style="width: 36%; margin-left: 60px;" value="">
+                        <input type="date" name="enddate" style="width: 36%; margin-left: 60px;"
+                            value="<%=query.enddate%>">
                     </div>
                     <div class="complete">
                         <p name="married">
                             Complete
                         </p>
-                        <select name="married" class="married">
-                            <option disable selected value="">-select married-</option>
-                            <option value="0">Not Yet</option>
-                            <option value="1">Yes</option>
-                        </select>
+                        <% if(query.complete=='true' ) { %>
+                            <select name="complete">
+                                <option disabled> -select complete- </option><br>
+                                <option value="true" selected>Done</option>
+                                <option value="false">Not Yet</option>
+                            </select>
+                            <% } else if (query.complete=='false' ) { %>
+                                <select name="complete">
+                                    <option disabled> -select complete- </option><br>
+                                    <option value="true">Done</option>
+                                    <option value="false" selected>Not Yet</option>
+                                </select>
+                                <% } else { %>
+                                    <select name="complete">
+                                        <option disabled selected> -select complete- </option><br>
+                                        <option value="true">Done</option>
+                                        <option value="false">Not Yet</option>
+                                    </select>
+                                    <% } %>
                     </div>
                     <div class="operation">
                         <p>
                             Operation
-                            <input value="OR" id="or" type="radio" name="mode" checked>
-                            <label for="or">OR</label>
-                            <input value="AND" id="and" type="radio" style="margin-left: 20px;" name="mode">
-                            <label for="and">AND</label>
+                            <%if(query.mode=='OR' ){%>
+                                <input value="OR" id="or" type="radio" name="mode" checked>
+                                <label for="or">OR</label>
+                                <input value="AND" id="and" type="radio" style="margin-left: 20px;" name="mode">
+                                <label for="and">AND</label>
+                                <%}else if(query.mode=='AND' ){%>
+                                    <input value="OR" id="or" type="radio" name="mode">
+                                    <label for="or">OR</label>
+                                    <input value="AND" id="and" type="radio" style="margin-left: 20px;" name="mode"
+                                        checked>
+                                    <label for="and">AND</label>
+                                    <%}else{%>
+                                        <input value="OR" id="or" type="radio" name="mode" checked>
+                                        <label for="or">OR</label>
+                                        <input value="AND" id="and" type="radio" style="margin-left: 20px;" name="mode">
+                                        <label for="and">AND</label>
+                                        <%}%>
                         </p>
                     </div>
                 </div>
@@ -55,44 +86,69 @@
         <hr style="border: 1px groove #f2f2f2" class="garis">
 
         <table class="table">
+            <thead>
+                <div class="table-header">
+                    <tr>
+                        <th>No.</th>
+                        <th>Title </th>
+                        <th>Complete</th>
+                        <th>Deadline</th>
+                        <th>actions</th>
+                    </tr>
+                </div>
+            </thead>
             <tbody class="tbody">
                 <%data.forEach((item,index)=>{%>
-                    <%if(new Date(`${item.deadline}`).getTime()){ %>
-                        <div class="table-header">
-                            <tr>
-                                <th>No.</th>
-                                <th>Title </th>
-                                <th>Complete</th>
-                                <th>Deadline</th>
-                                <th>actions</th>
-                            </tr>
-                        </div>
+                    <%if(new Date(`${item.deadline}`).getTime() < new Date().getTime() && !item.complete){ %>
                         <div class="table-body">
-                            <tr>
-                                <td>
+                            <tr class="table-tr">
+                                <td style="background-color: #F4584F;">
                                     <%= index + 1%>
                                 </td>
-                                <td>
+                                <td style="background-color: #F4584F;">
                                     <%=item.title%>
                                 </td>
-
-                                <td>
-                                    <%=item.complete ? 'Done' : 'Not Yet' %>
+                                <td style="background-color: #F4584F;">
+                                    <%=item.complete? 'Done' : 'Not Yet' %>
                                 </td>
-                                <td>
+                                <td style="background-color: #F4584F;">
                                     <%= moment(item.deadline).locale('id').format('Do MMM YYYY LT')%>
                                 </td>
-                                <td>
+                                <td style="background-color: #F4584F;">
                                     <a href="/update/" class="update">
-                                        <i class="fa-sharp fa-solid fa-pencil"></i>
+                                        <i class="fa-solid fa-pencil" style="color: white;"></i>
                                     </a>
                                     <button class="delete" onclick="on('')"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
                         </div>
-                        <%}%>
-                            <div class="table-footer"></div>
-                            <%})%>
+                        <%}else{%>
+                            <div class="table-body">
+                                <tr class="table-tr">
+                                    <td>
+                                        <%= index + 1%>
+                                    </td>
+                                    <td>
+                                        <%=item.title%>
+                                    </td>
+                                    <td>
+                                        <%=item.complete? 'Done' : 'Not Yet' %>
+                                    </td>
+                                    <td>
+                                        <%= moment(item.deadline).locale('id').format('Do MMM YYYY LT')%>
+                                    </td>
+                                    <td>
+                                        <a href="/users/edit/<%=item.id%>" class="update">
+                                            <i class="fa-solid fa-pencil" style="color: white;"></i>
+                                        </a>
+                                        <button class="delete" onclick="on('')"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </div>
+                            <%}%>
+                                <div class="table-footer"></div>
+                                <%})%>
             </tbody>
         </table>
         <div class="add">

@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+    <div class="container-edit">
+        <div class="header-edit">
+            <h1>Updating Data</h1>
+        </div>
+        <form action="" method="post">
+            <div class="body2">
+                <div class="body-title">
+                    <p>Title</p>
+                    <input type="text" title="title" name="title" placeholder="insert your title"
+                        value="<%= data[0].title%>" required>
+                </div>
+                <div class="body-deadline">
+                    <p>
+                        Deadline
+                        <input type="date" name="deadline"
+                            value=" <%=moment(data[0].deadline).format('YYYY-MM-DDThh:mm')%>">
+                    </p>
+                </div>
+                <div class="body-complete">
+                    <p name="married">
+                        Complete
+                        <input type="checkbox" id="complete" name="complete" id="complete"
+                            <%=data[0].complete? "checked" : "" %>/>
+                        <label for="complete">done</label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-edit">
+                <button type="submit"><i class="fa-solid fa-floppy-disk"></i></button>
+                <a href="users"><i class="fa-sharp fa-solid fa-rotate-left"></i></i></a>
+            </div>
+        </form>
+    </div>
+    <%- include('../partials/footer') %>
