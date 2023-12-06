@@ -1,0 +1,31 @@
+.container {
+    margin-top: 2%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+
+}
+
+.form-signin {
+    max-width: 330ex;
+    padding: 1rem;
+}
+
+.mb-4 {
+    margin-left: 38.5%;
+}
+
+.form-floating {
+    width: 25%;
+    margin-left: 37.5%;
+}
+
+.container button {
+    margin-left: 37.5%;
+    width: 25%;
+    margin-top: 10px;
+}

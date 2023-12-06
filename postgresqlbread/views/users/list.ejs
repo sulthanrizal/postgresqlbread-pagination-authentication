@@ -1,0 +1,121 @@
+<%- include('../partials/header') %>
+    <div class="container">
+        <div class="header">
+            <div class="email">
+                <a href="/"><img src="../images/default-account.png" alt="gambar account"></a>
+                <h2>Email@gmail.com</h2>
+                <a href="/"><i class="fa-solid fa-right-from-bracket" style="color: white;"></i>sign out</a>
+            </div>
+            <div class="judul">
+                <h1>PostgreSQL Bread(Browse,Read,Edit,Add,Delete) and Pagination</h1>
+            </div>
+        </div>
+        <div class="body">
+            <form action="/users" method="get">
+                <input type="hidden" name="page" value="1">
+                <div class="form">
+                    <div class="title">
+                        <p>Title</p>
+                        <input type="text" title="title" placeholder="insert your title" value="">
+                    </div>
+                    <div class="deadline">
+                        <p name="deadline">
+                            Deadline
+                        </p>
+                        <input type="date" name="startdate" style="width: 36%; margin-right: 60px;" value="">
+                        s.d.
+                        <input type="date" name="enddate" style="width: 36%; margin-left: 60px;" value="">
+                    </div>
+                    <div class="complete">
+                        <p name="married">
+                            Complete
+                        </p>
+                        <select name="married" class="married">
+                            <option disable selected value="">-select married-</option>
+                            <option value="0">Not Yet</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    <div class="operation">
+                        <p>
+                            Operation
+                            <input value="OR" id="or" type="radio" name="mode" checked>
+                            <label for="or">OR</label>
+                            <input value="AND" id="and" type="radio" style="margin-left: 20px;" name="mode">
+                            <label for="and">AND</label>
+                        </p>
+                    </div>
+                </div>
+                <div class="footer">
+                    <button type="submit" class="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <a href="/users" class="reset"><i class="fa-solid fa-arrows-rotate"></i></a>
+                </div>
+            </form>
+        </div>
+        <hr style="border: 1px groove #f2f2f2" class="garis">
+
+        <table class="table">
+            <tbody class="tbody">
+                <%data.forEach((item,index)=>{%>
+                    <%if(new Date(`${item.deadline}`).getTime()){ %>
+                        <div class="table-header">
+                            <tr>
+                                <th>No.</th>
+                                <th>Title </th>
+                                <th>Complete</th>
+                                <th>Deadline</th>
+                                <th>actions</th>
+                            </tr>
+                        </div>
+                        <div class="table-body">
+                            <tr>
+                                <td>
+                                    <%= index + 1%>
+                                </td>
+                                <td>
+                                    <%=item.title%>
+                                </td>
+
+                                <td>
+                                    <%=item.complete ? 'Done' : 'Not Yet' %>
+                                </td>
+                                <td>
+                                    <%= moment(item.deadline).locale('id').format('Do MMM YYYY LT')%>
+                                </td>
+                                <td>
+                                    <a href="/update/" class="update">
+                                        <i class="fa-sharp fa-solid fa-pencil"></i>
+                                    </a>
+                                    <button class="delete" onclick="on('')"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </div>
+                        <%}%>
+                            <div class="table-footer"></div>
+                            <%})%>
+            </tbody>
+        </table>
+        <div class="add">
+            <a href="/users/add">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+    </div>
+    <div class="notif" id="notif">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Confirmation</h4>
+                    <p class="close" onclick="off()">&times;</p>
+                </div>
+                <div class="modal-body">
+                    <p id="ask"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="notif-no" onclick="off()">No</button>
+                    <a id="nextdelete" class="notif-yes" href="#">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>

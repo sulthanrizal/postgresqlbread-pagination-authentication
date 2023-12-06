@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./stylesheets/login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        .alert-failed {
+            padding: 20px;
+            background-color: #F6D7D8;
+            color: #85282D;
+            text-align: center;
+            border-radius: 6px;
+            width: 25%;
+            margin-left: 37.59%
+        }
+
+
+        .alert-succes {
+            padding: 20px;
+            background-color: #D2E6DC;
+            color: #58846C;
+            text-align: center;
+            border-radius: 6px;
+            width: 25%;
+            margin-left: 37.59%
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <main class="form-signin w-100 m-auto">
+            <form action="" method="post">
+                <img class="mb-4" src="../images/logo-rubicamp.png" alt="" width="300" height="100">
+                <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" name="email"
+                        placeholder="name@example.com"
+                        style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" name="password"
+                        placeholder="Password" style="border-top-right-radius: 0px; border-top-left-radius: 0px;">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <button class="btn btn-primary  py-2" type="submit">Sign in</button>
+                <p class="text-center">doesn't have an account? please <a href="/register">sign up</a></p>
+                <p class="mt-5 mb-3 text-body-secondary text-center">© 2017–2023</p>
+                <%- include('./partials/alert') %>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>

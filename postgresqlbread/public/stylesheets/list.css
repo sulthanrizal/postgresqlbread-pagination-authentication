@@ -1,0 +1,181 @@
+.container {
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    margin-left: 6%;
+    margin-right: 6%;
+    border-radius: 7px;
+    font-family: Arial;
+}
+
+.header {
+    background-color: #F8F8F8;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.email {
+    display: flex;
+    margin-left: 2%;
+}
+
+.email a img {
+    height: 50px;
+    margin-top: -15px;
+}
+
+.email a:first-child {
+    margin-top: 25px;
+}
+
+.email h2 {
+    margin-left: 12px;
+}
+
+.email a:last-child {
+    text-align: center;
+    padding-top: 8px;
+    margin: 15px 10px 20px 70%;
+    text-decoration: none;
+    color: white;
+    width: 15%;
+    border-radius: 5px;
+    background-color: #6C747F;
+}
+
+
+.email i {
+    margin-right: 4px;
+}
+
+.judul {
+    text-align: center;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.body {
+    /* border: 1px solid black; */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.title {
+    display: flex;
+    height: 35px;
+    margin-top: 15px;
+}
+
+.title p {
+    margin-top: 10px;
+}
+
+.title input {
+    padding-left: 10px;
+    margin-left: 13%;
+    width: 100%;
+    border: 1px solid#ddd;
+    border-radius: 7px;
+}
+
+.deadline {
+    display: flex;
+    height: 35px;
+    margin-top: 15px;
+}
+
+.deadline p {
+    margin-top: 10px;
+}
+
+.deadline input {
+    margin-left: 10.3%;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding-left: 10px;
+}
+
+.complete {
+    display: flex;
+    margin-top: 15px;
+    height: 35px;
+}
+
+.complete select {
+    margin-left: 9.8%;
+    border: 1px solid #ddd;
+    width: 100%;
+    border-radius: 7px;
+    padding-left: 10px;
+}
+
+.complete p {
+    margin-top: 10px;
+}
+
+.operation {
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.operation input:first-child {
+    margin-left: 9.1%;
+}
+
+
+.search {
+    padding: 10px;
+    background-color: #1ECAF0;
+    border: 1px solid #1ECAF0;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+
+.reset {
+    display: inline-block;
+    border: 1px solid #FEC008;
+    margin-left: 2px;
+    padding: 8.5px 8.5px 8.5px 8.5px;
+    background-color: #FEC008;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+
+.table {
+    width: 100%;
+    border-bottom: 1px solid #dddd;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+hr {
+    width: 98.5%;
+}
+
+th,
+td {
+    padding-left: 10px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+
+
+.add {
+    border-top: 1px solid #ddd;
+    padding: 15px 15px 20px 15px;
+    margin-top: 10px;
+    background-color: #F8F8F8;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.add a i {
+    padding: 10px 10px 10px 9px;
+    background-color: #0C6DFD;
+    color: white;
+    border-radius: 7px;
+}
