@@ -1,3 +1,77 @@
 .container-edit {
     border: 1px solid #ddd;
+    margin: 2% 15% 0% 15%;
+    font-family: Arial;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.header-edit {
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f8f8;
+    padding: 5px;
+    text-align: center;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.body2 {
+    margin: 0px 10px 0px 10px;
+}
+
+.body-title {
+    display: flex;
+    margin-top: 15px;
+}
+
+.body-title input {
+    width: 100%;
+    margin-left: 15%;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding-left: 10px;
+}
+
+.body-deadline input {
+    width: 80.6%;
+    height: 35px;
+    margin-left: 11%;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding-left: 10px;
+    margin-top: -10px;
+}
+
+.body-complete input {
+    margin-left: 101.5px;
+}
+
+.footer-edit {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f8f8f8;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.footer-edit button {
+    padding: 10px;
+    background-color: #0C6DFD;
+    border: 1px solid #0C6DFD;
+    border-radius: 7px;
+    margin-top: 10px;
+    color: white;
+}
+
+.footer-edit a {
+    display: inline-block;
+    border: 1px solid #FEC008;
+    padding: 8.5px 8.5px 8.5px 8.5px;
+    background-color: #FEC008;
+    color: black;
+    border-radius: 7px;
+
 }

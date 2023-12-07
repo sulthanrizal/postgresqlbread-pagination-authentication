@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
     <div class="container-edit">
+
         <div class="header-edit">
             <h1>Updating Data</h1>
         </div>
@@ -18,7 +19,7 @@
                     </p>
                 </div>
                 <div class="body-complete">
-                    <p name="married">
+                    <p name="complete">
                         Complete
                         <input type="checkbox" id="complete" name="complete" id="complete"
                             <%=data[0].complete? "checked" : "" %>/>
@@ -29,7 +30,7 @@
 
             <div class="footer-edit">
                 <button type="submit"><i class="fa-solid fa-floppy-disk"></i></button>
-                <a href="users"><i class="fa-sharp fa-solid fa-rotate-left"></i></i></a>
+                <a href="/users"><i class="fa-sharp fa-solid fa-rotate-left"></i></i></a>
             </div>
         </form>
     </div>

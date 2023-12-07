@@ -50,9 +50,8 @@
 .footer-add a {
     display: inline-block;
     border: 1px solid #FEC008;
-    padding: 8.5px 8.5px 8.5px 8.5px;
+    padding: 8px 8px 8.5px 8.5px;
     background-color: #FEC008;
     color: black;
     border-radius: 5px;
-    margin-top: 10px;
 }
