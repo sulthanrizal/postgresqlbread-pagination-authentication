@@ -113,13 +113,14 @@
                                     <%=item.complete? 'Done' : 'Not Yet' %>
                                 </td>
                                 <td style="background-color: #F4584F;">
-                                    <%= moment(item.deadline).locale('id').format('Do MMM YYYY LT')%>
+                                    <%= moment(item.deadline).locale('id').format('DD MMM YYYY HH:mm')%>
                                 </td>
                                 <td style="background-color: #F4584F;">
-                                    <a href="/update/" class="update">
+                                    <a href="/users/edit/<%=item.id%>" class="update">
                                         <i class="fa-solid fa-pencil" style="color: white;"></i>
                                     </a>
-                                    <button class="delete" onclick="on('')"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="delete" onclick="on('<%=item.id%>','<%=item.title%>')"><i
+                                            class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
                         </div>
@@ -136,13 +137,13 @@
                                         <%=item.complete? 'Done' : 'Not Yet' %>
                                     </td>
                                     <td>
-                                        <%= moment(item.deadline).locale('id').format('Do MMM YYYY LT')%>
+                                        <%= moment(item.deadline).locale('id').format('DD MMM YYYY HH:mm')%>
                                     </td>
                                     <td>
                                         <a href="/users/edit/<%=item.id%>" class="update">
                                             <i class="fa-solid fa-pencil" style="color: white;"></i>
                                         </a>
-                                        <button class="delete" onclick="on('')"><i
+                                        <button class="delete" onclick="on('<%= item.id%>','<%=item.title%>')"><i
                                                 class="fa-solid fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -150,13 +151,76 @@
                             <%}%>
                                 <div class="table-footer"></div>
                                 <%})%>
-            </tbody>
-        </table>
-        <div class="add">
-            <a href="/users/add">
-                <i class="fa-solid fa-plus"></i>
-            </a>
-        </div>
+    </div>
+
+    </div>
+    </tbody>
+    </table>
+    <div class="add">
+        <a href="/users/add">
+            <i class="fa-solid fa-plus"></i>
+        </a>
+    </div>
+    <div class="pagination">
+        <%if(url.includes('page')){%>
+            <%if(page=='1' ){%>
+                <a href="<%= url.replace(`page=${page}`, `page=${page}`) %>">&laquo;</a>
+                <%}else{%>
+                    <a href="<%= url.replace(`page=${page}`, `page=${page - 1}`) %>">&laquo;</a>
+                    <%}%>
+                        <%}else{%>
+                            <%if(page=='1' ){%>
+                                <a href="#">&laquo;</a>
+                                <%}else{%>
+                                    <a href="/?page=<%= page-1 %>">&laquo;</a>
+                                    <%}%>
+                                        <%}%>
+                                            <%for(let i=0 ; i <=pages; i++){%>
+                                                <%if(url.includes('pages=')){%>
+                                                    <%if(i==page){%>
+                                                        <a href=" <%=url.replace(`page=${page}`, `page=${i}`) %>"
+                                                            class="<%= page==i ? 'active' : '' %>">
+                                                            <%= i %>
+                                                        </a>
+                                                        <%}else{%>
+                                                            <a href="<%= url.replace(`page=${page}`, `page=${i}`) %>"
+                                                                class="<%= page==i ? 'active' : '' %>">
+                                                                <%= i %>
+                                                            </a>
+                                                            <%}%>
+                                                                <%}else{%>
+                                                                    <%if(i==page){%>
+                                                                        <a href="/?page=<%= i %>"
+                                                                            class="<%= page==i ? 'active' : '' %>">
+                                                                            <%= i %>
+                                                                        </a>
+                                                                        <%}else{%>
+                                                                            <a href="/?page=<%= i %>"
+                                                                                class="<%= page==i ? 'active' : '' %>">
+                                                                                <%= i %>
+                                                                            </a>
+                                                                            <%}%>
+                                                                                <%}%>
+                                                                                    <%}%>
+                                                                                        <%if(url.includes('page')){%>
+                                                                                            <%if(page==pages){%>
+                                                                                                <a
+                                                                                                    href="<%= url.replace(`page=${page}`, `page=${page}`) %>">&raquo;</a>
+                                                                                                <%}else{%>
+                                                                                                    <a
+                                                                                                        href="<%= url.replace(`page=${page}`, `page=${(page * 1) + 1}`) %>">&raquo;</a>
+                                                                                                    <%}%>
+                                                                                                        <%}else{%>
+                                                                                                            <%if(page==pages){%>
+                                                                                                                <a
+                                                                                                                    href="#">&raquo;</a>
+                                                                                                                <%}else{%>
+                                                                                                                    <a
+                                                                                                                        href="/?page=<%= Number(page) +1%>">&raquo;</a>
+                                                                                                                    <%}%>
+                                                                                                                        <%}%>
+    </div>
+
     </div>
     <div class="notif" id="notif">
         <div class="modal-dialog">

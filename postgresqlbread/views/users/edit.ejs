@@ -14,8 +14,8 @@
                 <div class="body-deadline">
                     <p>
                         Deadline
-                        <input type="date" name="deadline"
-                            value=" <%=moment(data[0].deadline).format('YYYY-MM-DDThh:mm')%>">
+                        <input type="datetime-local" name="deadline"
+                            value="<%= moment(data[0].deadline).format('YYYY-MM-DDThh:mm')%>" required>
                     </p>
                 </div>
                 <div class="body-complete">
