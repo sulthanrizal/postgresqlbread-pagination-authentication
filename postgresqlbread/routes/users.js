@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 const moment = require('moment')
-var { isLoggedInd } = require('../helper/util.js');
+var { isLoggedInd } = require('../helpers/util.js');
+const { title } = require('process');
 
 
 module.exports = function (db) {
@@ -49,7 +50,6 @@ module.exports = function (db) {
     }
     sql += ` ORDER BY id DESC LIMIT $${params.length + 1} OFFSET $${params.length + 2}`
     params.push(limit, offset)
-    console.log(sql, params, sqlcount, paramscount)
 
     db.query(sqlcount, paramscount, (err, data) => {
       if (err) res.send(err)
@@ -60,7 +60,6 @@ module.exports = function (db) {
         res.render('users/list', { data, query: req.query, page, pages, offset, moment, url: req.url, akun: akun[0], user: req.session.user.userid })
       })
     })
-    // console.log(sql, params)
   })
 
   router.get('/add', isLoggedInd, (req, res) => {
@@ -77,12 +76,12 @@ module.exports = function (db) {
 
   router.get('/delete/:id', isLoggedInd, (req, res) => {
     const id = req.params.id
-    console.log(id)
     db.query('DELETE FROM todos WHERE id = $1', [id], (err) => {
       if (err) return res.send(err)
       res.redirect('/users')
     })
   })
+
 
   router.get('/edit/:id', isLoggedInd, (req, res) => {
     const id = req.params.id
@@ -92,7 +91,15 @@ module.exports = function (db) {
     })
   })
 
-  // router.post('/edit/:id')
+
+  router.post('/edit/:id', (req, res) => {
+    const id = req.params.id
+    const { complete } = req.body
+    db.query(`UPDATE todos SET title=$1 , deadline=$2 , complete=$3 WHERE id=$4`, [req.body.title, req.body.deadline, Boolean(complete), id], (err) => {
+      if (err) return res.send(err)
+      res.redirect('/users')
+    })
+  })
 
 
   return router;

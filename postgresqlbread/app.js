@@ -15,8 +15,8 @@ const pool = new Pool({
 })
 
 
-var indexRouter = require('./routes/index')(pool);
-var usersRouter = require('./routes/users')(pool);
+var indexRouter = require('./routes/index')(pool); // teknik emmedietelly call
+var usersRouter = require('./routes/users')(pool);// teknik emmedietelly call
 
 var flash = require('connect-flash');
 var app = express();
