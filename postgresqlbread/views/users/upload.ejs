@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+    <div class="container-avatar">
+        <div class="header-avatar">
+            <h1>Change Avatar</h1>
+            <form ref='uploadForm' id='uploadForm' action='' method='post' encType="multipart/form-data">
+                <div class="avatar">
+                    <label for="avatar">Avatar</label>
+                    <input type="file" name="avatar" id=" avatar" placeholder="loo-k" accept="image/*" />
+                </div>
+                <div class="upload">
+                    <label for="upload">Priview</label>
+                    <div class="img-upload">
+                        <img src="../images/default-account.png" alt="gambar default">
+                    </div>
+                </div>
+                <div class="footer-avatar">
+                    <button type="submit"><i class="fa-solid fa-floppy-disk"></i></button>
+                    <a href="/users"><i class="fa-sharp fa-solid fa-rotate-left"></i></i></a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>

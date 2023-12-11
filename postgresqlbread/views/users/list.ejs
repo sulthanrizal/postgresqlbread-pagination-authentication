@@ -2,7 +2,9 @@
     <div class="container">
         <div class="header">
             <div class="email">
-                <a href="/"><img src="../images/default-account.png" alt="gambar account"></a>
+                <a href="users/upload"><img
+                        src="<%= akun.avatar? `../images/${akun.avatar}` : `../images/default-account.png` %>"
+                        alt="gambar account"></a>
                 <h2>
                     <%=akun.email%>
                 </h2>
@@ -15,6 +17,8 @@
         <div class="body">
             <form action="" method="get">
                 <input type="hidden" name="page" value="1">
+                <input type="hidden" name="sort" value="<%= sort%>">
+                <input type="hidden" name="sortBy" value="<%= sortBy%>">
                 <div class="form">
                     <div class="title">
                         <p>Title</p>
@@ -91,9 +95,19 @@
                 <div class="table-header">
                     <tr>
                         <th>No.</th>
-                        <th>Title </th>
-                        <th>Complete</th>
-                        <th>Deadline</th>
+                        <th><a href="/users<%= url.replace(`sortBy=${sortBy}`, `sortBy=title`).replace(`sort=${sort}`,`sort=${sort == 'asc' ? 'desc' : 'asc'}`)%>"
+                                style="color: black;"><i
+                                    class="fa-solid fa-<%= sortBy == 'title' ? sort == 'asc' ? 'sort-up' : 'sort-down' : 'sort'%>"></i></a>
+                            Title
+                        </th>
+                        <th><a href="/users<%= url.replace(`sortBy=${sortBy}`, `sortBy=complete`).replace(`sort=${sort}`,`sort=${sort == 'asc' ? 'desc' : 'asc'}`)%>"
+                                style="color: black;"><i
+                                    class="fa-solid fa-<%= sortBy == 'complete' ? sort == 'asc' ? 'sort-up' : 'sort-down' : 'sort'%>"></i></a>
+                            Complete</th>
+                        <th><a href="/users<%= url.replace(`sortBy=${sortBy}`, `sortBy=deadline`).replace(`sort=${sort}`,`sort=${sort == 'asc' ? 'desc' : 'asc'}`)%>"
+                                style="color: black;"><i
+                                    class="fa-solid fa-<%= sortBy == 'deadline' ? sort == 'asc' ? 'sort-up' : 'sort-down' : 'sort'%>"></i></a>
+                            Deadline</th>
                         <th>actions</th>
                     </tr>
                 </div>
@@ -104,7 +118,7 @@
                         <div class="table-body">
                             <tr class="table-tr">
                                 <td style="background-color: #F4584F;">
-                                    <%= index + 1%>
+                                    <%= index + 1 + offset%>
                                 </td>
                                 <td style="background-color: #F4584F;">
                                     <%=item.title%>
@@ -128,7 +142,7 @@
                             <div class="table-body">
                                 <tr class="table-tr">
                                     <td>
-                                        <%= index + 1%>
+                                        <%= index + 1 + offset%>
                                     </td>
                                     <td>
                                         <%=item.title%>
@@ -161,64 +175,32 @@
             <i class="fa-solid fa-plus"></i>
         </a>
         <div class="pagination">
-            <%if(url.includes('page')){%>
-                <%if(page=='1' ){%>
-                    <a href="/users<%= url.replace(`page=${page}`, `page=${page}`) %>">&laquo;</a>
-                    <%}else{%>
-                        <a href="/users<%= url.replace(`page=${page}`, `page=${page - 1}`) %>">&laquo;</a>
-                        <%}%>
-                            <%}else{%>
-                                <%if(page=='1' ){%>
-                                    <a href="#">&laquo;</a>
-                                    <%}else{%>
-                                        <a href="/users/?page=<%= page-1 %>">&laquo;</a>
-                                        <%}%>
-                                            <%}%>
-                                                <%for(let i=1; i <=pages; i++){%>
-                                                    <%if(url.includes('pages=')){%>
-                                                        <%if(i==page){%>
-                                                            <a href="/users<%=url.replace(`page=${page}`, `page=${i}`) %>"
-                                                                class="<%= page==i ? 'active' : '' %>">
-                                                                <%= i %>
-                                                            </a>
-                                                            <%}else{%>
-                                                                <a href="/users<%= url.replace(`page=${page}`, `page=${i}`) %>"
-                                                                    class="<%= page==i ? 'active' : '' %>">
-                                                                    <%= i %>
-                                                                </a>
-                                                                <%}%>
-                                                                    <%}else{%>
-                                                                        <%if(i==page){%>
-                                                                            <a href="/users/?page=<%= i %>"
-                                                                                class="<%= page==i ? 'active' : '' %>">
-                                                                                <%= i %>
-                                                                            </a>
-                                                                            <%}else{%>
-                                                                                <a href="/users/?page=<%= i %>"
-                                                                                    class="<%= page==i ? 'active' : '' %>">
-                                                                                    <%= i %>
-                                                                                </a>
-                                                                                <%}%>
-                                                                                    <%}%>
-                                                                                        <%}%>
-                                                                                            <%if(url.includes('page')){%>
-                                                                                                <%if(page==pages){%>
-                                                                                                    <a
-                                                                                                        href="/users<%= url.replace(`page=${page}`, `page=${page}`) %>">&raquo;</a>
-                                                                                                    <%}else{%>
-                                                                                                        <a
-                                                                                                            href="/users<%= url.replace(`page=${page}`, `page=${(page * 1) + 1}`) %>">&raquo;</a>
-                                                                                                        <%}%>
-                                                                                                            <%}else{%>
-                                                                                                                <%if(page==pages){%>
-                                                                                                                    <a
-                                                                                                                        href="#">&raquo;</a>
-                                                                                                                    <%}else{%>
-                                                                                                                        <a
-                                                                                                                            href="/users/?page=<%= Number(page) +1%>">&raquo;</a>
 
-                                                                                                                        <%}%>
-                                                                                                                            <%}%>
+            <%if(page=='1' ){%>
+                <a href="/users<%= url.replace(`page=${page}`, `page=${page}`) %>">&laquo;</a>
+                <%}else{%>
+                    <a href="/users<%= url.replace(`page=${page}`, `page=${page - 1}`) %>">&laquo;</a>
+                    <%}%>
+                        <%for(let i=1; i <=pages; i++){%>
+                            <%if(i==page){%>
+                                <a href="/users<%= url.replace(`page=${page}`, `page=${i}`) %>"
+                                    class="<%= page==i ? 'active' : '' %>">
+                                    <%= i %>
+                                </a>
+                                <%}else{%>
+                                    <a href="/users<%= url.replace(`page=${page}`, `page=${i}`) %>"
+                                        class="<%= page==i ? 'active' : '' %>">
+                                        <%= i %>
+                                    </a>
+                                    <%}%>
+                                        <%}%>
+                                            <%if(page==pages){%>
+                                                <a
+                                                    href="/users<%= url.replace(`page=${page}`, `page=${page}`) %>">&raquo;</a>
+                                                <%}else{%>
+                                                    <a
+                                                        href="/users<%= url.replace(`page=${page}`, `page=${(page * 1) + 1}`) %>">&raquo;</a>
+                                                    <%}%>
         </div>
     </div>
     </div>
