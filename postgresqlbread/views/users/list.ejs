@@ -88,7 +88,7 @@
                 </div>
             </form>
         </div>
-        <hr style="border: 1px groove #f2f2f2" class="garis">
+        <hr style="border: 1px solid #ddd" class="garis">
 
         <table class="table">
             <thead>
@@ -117,19 +117,19 @@
                     <%if(new Date(`${item.deadline}`).getTime() < new Date().getTime() && !item.complete){ %>
                         <div class="table-body">
                             <tr class="table-tr">
-                                <td style="background-color: #F4584F;">
+                                <td style="background-color: #F4584F; color: white;">
                                     <%= index + 1 + offset%>
                                 </td>
-                                <td style="background-color: #F4584F;">
+                                <td style="background-color: #F4584F;color: white;">
                                     <%=item.title%>
                                 </td>
-                                <td style="background-color: #F4584F;">
+                                <td style="background-color: #F4584F;color: white;">
                                     <%=item.complete? 'Done' : 'Not Yet' %>
                                 </td>
-                                <td style="background-color: #F4584F;">
+                                <td style="background-color: #F4584F;color: white;">
                                     <%= moment(item.deadline).locale('id').format('DD MMM YYYY HH:mm')%>
                                 </td>
-                                <td style="background-color: #F4584F;">
+                                <td style="background-color: #F4584F;color: white;">
                                     <a href="/users/edit/<%=item.id%>" class="update">
                                         <i class="fa-solid fa-pencil" style="color: white;"></i>
                                     </a>
@@ -175,7 +175,6 @@
             <i class="fa-solid fa-plus"></i>
         </a>
         <div class="pagination">
-
             <%if(page=='1' ){%>
                 <a href="/users<%= url.replace(`page=${page}`, `page=${page}`) %>">&laquo;</a>
                 <%}else{%>

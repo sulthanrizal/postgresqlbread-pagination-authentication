@@ -2,7 +2,7 @@
     margin-top: 10px;
     border: 1px solid #ddd;
     border-radius: 6px;
-
+    width: 70%;
 }
 
 .head {
@@ -19,6 +19,7 @@
     border-radius: 5px;
     height: 100%;
     width: 50%;
+    border: 1px solid #ddd;
 }
 
 .foot2 {
