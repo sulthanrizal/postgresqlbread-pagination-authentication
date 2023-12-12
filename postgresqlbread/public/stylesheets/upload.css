@@ -1,0 +1,35 @@
+.container {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+}
+
+.head {
+    text-align: center;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.col-sm-10 img {
+    border-radius: 5px;
+    height: 100%;
+    width: 50%;
+}
+
+.foot2 {
+    padding-left: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #f8f8f8;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.foot2 button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

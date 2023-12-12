@@ -1,4 +1,4 @@
-.container {
+.container-list {
     box-sizing: border-box;
     border: 1px solid #ddd;
     margin-left: 6%;
@@ -128,7 +128,7 @@
 }
 
 
-.search {
+.search-list {
     padding: 10px;
     background-color: #1ECAF0;
     border: 1px solid #1ECAF0;
@@ -136,7 +136,7 @@
     margin-top: 10px;
 }
 
-.reset {
+.reset-list {
     display: inline-block;
     border: 1px solid #FEC008;
     margin-left: 2px;

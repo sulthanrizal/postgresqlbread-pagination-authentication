@@ -35,16 +35,14 @@ module.exports = function (db) {
     }
 
     if (startdate && enddate) {
-      queris.push(`deadline BETWEEN  $${params.length + 1} and $${params.length + 2}::TIMESTAMP +  INTERVAL' 1 DAY - 1 SECOND' `)
+      queris.push(`deadline BETWEEN $${params.length + 1} and $${params.length + 2}::TIMESTAMP + INTERVAL '1 DAY - 1 SECOND' `)
       params.push(startdate, enddate)
       paramscount.push(startdate, enddate)
-    }
-    if (startdate) {
+    } else if (startdate) {
       queris.push(`deadline >= $${params.length + 1}`)
       params.push(startdate)
       paramscount.push(startdate)
-    }
-    if (enddate) {
+    } else if (enddate) {
       queris.push(`deadline <= $${params.length + 1}::TIMESTAMP + INTERVAL '1 DAY - 1 SECOND'`)
       params.push(enddate)
       paramscount.push(enddate)
