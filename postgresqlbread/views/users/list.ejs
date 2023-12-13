@@ -41,19 +41,19 @@
                         </p>
                         <% if(query.complete=='true' ) { %>
                             <select name="complete">
-                                <option disabled> -select complete- </option><br>
+                                <option value=""> -select complete- </option><br>
                                 <option value="true" selected>Done</option>
                                 <option value="false">Not Yet</option>
                             </select>
                             <% } else if (query.complete=='false' ) { %>
                                 <select name="complete">
-                                    <option disabled> -select complete- </option><br>
+                                    <option value=""> -select complete- </option><br>
                                     <option value="true">Done</option>
                                     <option value="false" selected>Not Yet</option>
                                 </select>
                                 <% } else { %>
                                     <select name="complete">
-                                        <option disabled selected> -select complete- </option><br>
+                                        <option value="" selected> -select complete- </option><br>
                                         <option value="true">Done</option>
                                         <option value="false">Not Yet</option>
                                     </select>
