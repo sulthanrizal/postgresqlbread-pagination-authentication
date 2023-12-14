@@ -65,7 +65,6 @@ module.exports = function (db) {
     sql += ` ORDER BY ${sortBy} ${sort}`
     sql += ` LIMIT $${params.length + 1} OFFSET $${params.length + 2}`
     params.push(limit, offset)
-    console.log(sql, params)
     db.query(sqlcount, paramscount, (err, data) => {
       if (err) res.send(err)
       const url = req.url == '/' ? `/?page=${page}&sortBy=${sortBy}&sort=${sort}` : req.url

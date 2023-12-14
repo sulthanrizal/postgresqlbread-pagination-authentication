@@ -25,10 +25,10 @@ module.exports = function (db) {
       }
 
       req.session.user = { userid: rows[0].id, email: rows[0].email }
-      console.log(req.session.user)
+
       res.redirect('/users')
     } catch (e) {
-      console.log(e)
+
       res.redirect('/')
     }
   });
