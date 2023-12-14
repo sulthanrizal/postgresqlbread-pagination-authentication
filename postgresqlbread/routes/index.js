@@ -63,9 +63,9 @@ module.exports = function (db) {
     }
   });
 
-  router.get('/loguot', (req, res, next) => {
+  router.get('/logout', (req, res, next) => {
     req.session.destroy(function (err) {
-      res.redirect('/ ')
+      res.redirect('/')
     })
   })
 
